@@ -422,7 +422,7 @@ class ConnectionSniffer(Supervisor):
     def __init__(self, bd_address='ff:ff:ff:ff:ff:ff', devices=None):
         super().__init__()
         self.interface = MultiSnifferInterface(3, devices=devices)
-        self.bd_address = bd_address_to_int(bd_address)
+        self.bd_address = bd_address if isinstance(bd_address, int) else bd_address_to_int(bd_address)
 
         self.sniff()
 
