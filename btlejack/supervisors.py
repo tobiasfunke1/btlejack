@@ -21,6 +21,7 @@ from btlejack.jobs import SingleSnifferInterface, MultiSnifferInterface
 from btlejack.session import BtlejackSession, BtlejackSessionError
 from btlejack.packets import *
 from btlejack.link import DeviceError
+from btlejack.helpers import bd_address_to_int
 
 class Supervisor(object):
     """
@@ -421,7 +422,7 @@ class ConnectionSniffer(Supervisor):
     def __init__(self, bd_address='ff:ff:ff:ff:ff:ff', devices=None):
         super().__init__()
         self.interface = MultiSnifferInterface(3, devices=devices)
-        self.bd_address = bd_address
+        self.bd_address = bd_address_to_int(bd_address)
 
         self.sniff()
 
