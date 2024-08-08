@@ -378,7 +378,7 @@ class ConnectionRecovery(Supervisor):
         """
         A BLE LL packet has been captured.
         """
-        print(packet)
+        pass
 
     def on_hijacking_success(self):
         """
@@ -533,7 +533,7 @@ class ConnectionSniffer(Supervisor):
         """
         A BLE LL packet has been captured.
         """
-        print(packet)
+        pass
 
     def on_hijacking_success(self):
         """
