@@ -722,7 +722,7 @@ class Csa2PrngNotification(Packet):
 class BlePacketNotification(Packet):
     def __init__(self, data):
         self.data = data
-        return super().__init__(Packet.N_PACKET, self.data, Packet.F_NOTIFICATION)
+        super().__init__(Packet.N_PACKET, self.data, Packet.F_NOTIFICATION)
 
     @staticmethod
     def from_raw(packet):
@@ -738,7 +738,7 @@ class NordicTapPacketNotification(Packet):
         self.rssi, self.event_counter, self.delta = unpack('<BHI', data[3:10])
         self.data = data
         self.payload = data[10:]
-        return super().__init__(Packet.N_PACKET_NORDIC, self.data, Packet.F_NOTIFICATION)
+        super().__init__(Packet.N_PACKET_NORDIC, self.data, Packet.F_NOTIFICATION)
 
     @staticmethod
     def from_raw(packet):
@@ -756,7 +756,7 @@ class HijackStatusNotification(Packet):
         Parse status.
         """
         self.status = (data[0] == 0x00)
-        return super().__init__(Packet.N_HIJACK_STATUS, data, Packet.F_NOTIFICATION)
+        super().__init__(Packet.N_HIJACK_STATUS, data, Packet.F_NOTIFICATION)
 
     @staticmethod
     def from_raw(packet):
@@ -769,7 +769,7 @@ class ConnectionLostNotification(Packet):
     """
 
     def __init__(self):
-        return super().__init__(Packet.N_CONN_LOST, bytes(), Packet.F_NOTIFICATION)
+        super().__init__(Packet.N_CONN_LOST, bytes(), Packet.F_NOTIFICATION)
 
     @staticmethod
     def from_raw(packet):
@@ -807,7 +807,7 @@ class ConnectionRequestNotification(Packet):
             channel_map[4],
             hop_increment
         )
-        return super().__init__(Packet.N_CONN_REQ, self.payload, Packet.F_NOTIFICATION)
+        super().__init__(Packet.N_CONN_REQ, self.payload, Packet.F_NOTIFICATION)
 
     @staticmethod
     def from_raw(packet):
